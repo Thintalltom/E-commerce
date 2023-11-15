@@ -4,12 +4,6 @@ import {  BsFacebook,
     BsTwitter } from "react-icons/bs";
 
 const Content = () => {
- // useEffect(() => {
- //   fetch("https://fakestoreapi.com/products")
- //     .then((res) => res.json())
-   //   .then((json) => console.log(json));
- // }, []);
-
   return (
     <div className="flex justify-center align-center">
       <div className="bg-pink-200 rounded-[10px] flex flex-row justify-center justify-around align-center  w-[80%] h-[25vw] mt-[20px] ">
