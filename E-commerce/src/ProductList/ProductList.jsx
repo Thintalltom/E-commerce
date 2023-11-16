@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useEffect, useState } from 'react'
-import { storeContext } from '../Context/Context'
+import {Link} from 'react-router-dom'
 const ProductList = () => {
   
 const [store, setStore] = useState([])
@@ -76,7 +76,9 @@ useEffect(() => {
     
         <img src={store.image} className='w-[200px] ' />
         <p>{store.title}</p>
-        <button>View details</button>
+       <Link to={`/detail/${store.id}`}>
+       <button>View details</button>
+       </Link> 
 
         </div>
     ))}
@@ -88,7 +90,9 @@ useEffect(() => {
     
         <img src={jewel.image} className='w-[200px] ' />
         <p className='text-sm'>{jewel.title}</p>
-        <button>View details</button>
+        <Link to={`/detail/${jewel.id}`}>
+       <button>View details</button>
+       </Link> 
 
         </div>
     ))}
@@ -100,7 +104,9 @@ useEffect(() => {
     
         <img src={item.image} className='w-[200px] ' />
         <p className='text-sm'>{item.title}</p>
-        <button>View details</button>
+        <Link to={`/detail/${item.id}`}>
+       <button>View details</button>
+       </Link> 
 
         </div>
     ))}
@@ -112,7 +118,9 @@ useEffect(() => {
     
         <img src={item.image} className='w-[200px] ' />
         <p className='text-sm'>{item.title}</p>
-        <button>View details</button>
+        <Link to={`/detail/${item.id}`}>
+       <button>View details</button>
+       </Link> 
 
         </div>
     ))}
@@ -126,7 +134,9 @@ useEffect(() => {
     
         <img src={item.image} className='w-[200px] ' />
         <p className='text-sm'>{item.title}</p>
-        <button>View details</button>
+        <Link to={`/detail/${item.id}`}>
+       <button>View details</button>
+       </Link> 
 
         </div>
     ))}

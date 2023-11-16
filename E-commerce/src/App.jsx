@@ -1,18 +1,17 @@
 import './App.css'
-import Navbar from './Navbar/Navbar'
-import Content from './ContentPage1/Content'
-import ProductList from './ProductList/ProductList'
-import { StoreProvider } from './Context/Context'
+import Home from './Home';
+import {  Routes, Route } from "react-router-dom";
+import ProductDetail from './ProductList/ProductDetail';
 
 function App() {
 
   return (
-    <StoreProvider>
-     <Navbar />
-     <Content />
-     <ProductList />
-       
-    </StoreProvider>
+  
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/detail/:id' element= {<ProductDetail />} />
+      </Routes>
+    
   )
 }
 
