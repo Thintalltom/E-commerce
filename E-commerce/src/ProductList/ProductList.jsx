@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext, useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
+import { storeContext } from '../Context/Context'
 const ProductList = () => {
   
 const [store, setStore] = useState([])
@@ -11,6 +12,7 @@ useEffect(() => {
   .then((json) => setStore(json));
 
   }, []);
+
 
   const [jewelery, setJewelery] = useState([])
   
@@ -56,6 +58,9 @@ useEffect(() => {
   const action = (index) => {
     setTabstate(index);
   };
+  const  globalContext = useContext(storeContext) // to access the data from the context
+  const dispatch = globalContext.dispatch // this adds the details of the product into an object
+  console.log(globalContext)
   
   return (
     <div className=' gap-9 mt-4  cursor-pointer p-4'>
@@ -91,7 +96,7 @@ useEffect(() => {
         <img src={jewel.image} className='w-[200px] ' />
         <p className='text-sm'>{jewel.title}</p>
         <Link to={`/detail/${jewel.id}`}>
-       <button>View details</button>
+       <button classsName='border-2 p-[20px] border-red-300 bg-slate-500 text-white'>View details</button>
        </Link> 
 
         </div>
@@ -106,6 +111,7 @@ useEffect(() => {
         <p className='text-sm'>{item.title}</p>
         <Link to={`/detail/${item.id}`}>
        <button>View details</button>
+       <button onClick={() => dispatch({type: 'ADD', payload:item})}>ADD TO CART</button>
        </Link> 
 
         </div>

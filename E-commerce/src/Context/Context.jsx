@@ -1,18 +1,31 @@
-import {useContext, createContext, useEffect, useState} from 'react';
+import {useContext, createContext, useReducer} from 'react';
 
 export const  storeContext = createContext();
 export const StoreProvider = (props) => {
-    
-    const [store, setStore] = useState([])
-//fetch the products from the api
-useEffect(() => {
- fetch("https://fakestoreapi.com/products")
-    .then((res) => res.json())
- .then((json) => setStore(json));
- }, []);
+    //will use useReducer hook to add the product to the cart
+    const reducer = (state, action) => {
+        switch(action.type)
+        {
+            case 'ADD':
+                const tempState =  state.filter((item) => action.payload.id === item.id)// to check for the presence of the item in a state
+                
+                if(tempState.length > 0)// if present in a temp state return the state
+                {
+                    return state
+                } else
+                {
+                    return[...state, action.payload] // else add it to the state 
+                }
+       
+
+            default: return state;
+        }
+    }
+    const [state, dispatch] = useReducer(reducer, []); // initial state and the array
+    const info ={state, dispatch};
 
 return(
-    <storeContext.Provider value={{setStore, store}}>
+    <storeContext.Provider value={info}>
         {props.children}
     </storeContext.Provider>
 );
