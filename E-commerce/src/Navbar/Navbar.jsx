@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsSuitHeartFill, BsSearch,BsCart2   } from "react-icons/bs";
-
+import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <div className='flex justify-around  p-4'>
@@ -15,7 +15,8 @@ const Navbar = () => {
         <p >Conduct</p>
         </div>
         <div className='flex justify-between gap-9 text-slate-500 cursor-pointer'>
-        <BsCart2 />
+        
+        <Link to='/cart'><BsCart2 /></Link>
        <BsSearch />
         <BsSuitHeartFill />
         </div>

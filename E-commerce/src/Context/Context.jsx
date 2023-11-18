@@ -16,7 +16,31 @@ export const StoreProvider = (props) => {
                 {
                     return[...state, action.payload] // else add it to the state 
                 }
-       
+            case 'INCREASE':
+                const tempState1 = state.map((item) => {
+                    if(item.id === action.payload.id){
+                       return  {...item, quantity: item.quantity + 1}
+                    } else
+                    {
+                        return item
+                    }
+                })//map is used so we can be able to access all the tems in the array
+            return tempState1;
+
+            case 'INCREASE':
+                const tempState2 = state.map((item) => {
+                    if(item.id === action.payload.id){
+                       return  {...item, quantity: item.quantity - 1}
+                    } else
+                    {
+                        return item
+                    }
+                })//map is used so we can be able to access all the tems in the array
+            return tempState2;
+            
+                case 'REMOVE' :
+                const filterState = state.filter((item) => action.payload.id != item.id)
+                return filterState
 
             default: return state;
         }

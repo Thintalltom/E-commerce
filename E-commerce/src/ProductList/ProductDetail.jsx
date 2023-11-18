@@ -23,7 +23,7 @@ const ProductDetail = () => {
   const dispatch = globalContext.dispatch // this adds the details of the product into an object
   console.log(globalContext)
   const { title, image, price, category, rating, description } = singleProduct;
-
+  
   return (
     <div className="flex flex-col justify-center  gap-4 p-4 align-center">
      <Link to='/'>
@@ -40,7 +40,7 @@ const ProductDetail = () => {
           </p>
 
           <p>Price: ${price}</p>
-
+          {singleProduct.quantity = 1}
           <button onClick={() => dispatch({type: 'ADD', payload:singleProduct})} className="border-2 bg-slate-400 border-slate-300 p-4">
             Add to Cart
           </button>
