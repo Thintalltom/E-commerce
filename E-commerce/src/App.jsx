@@ -3,6 +3,8 @@ import Home from './Home';
 import {  Routes, Route } from "react-router-dom";
 import ProductDetail from './ProductList/ProductDetail';
 import Cart from './Cart/Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -12,6 +14,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/detail/:id' element= {<ProductDetail />} />
         <Route path='/cart' element= {<Cart />} />
+        
       </Routes>
     
   )
