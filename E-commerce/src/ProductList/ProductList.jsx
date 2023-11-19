@@ -70,7 +70,9 @@ const ProductList = () => {
         <div
           onClick={() => action(1)}
           className={`${
-            tabstate === 1 ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[70px] h-[30px] grid content-center" : "bg-white text-xs grid content-center text-slate-500 "
+            tabstate === 1
+              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[70px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
           {" "}
@@ -79,7 +81,9 @@ const ProductList = () => {
         <div
           onClick={() => action(2)}
           className={`${
-            tabstate === 2 ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[90px] h-[30px] grid content-center" : "bg-white text-xs grid content-center text-slate-500 "
+            tabstate === 2
+              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[90px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
           {" "}
@@ -88,7 +92,9 @@ const ProductList = () => {
         <div
           onClick={() => action(3)}
           className={`${
-            tabstate === 3 ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[90px] h-[30px] grid content-center" : "bg-white text-xs grid content-center text-slate-500 "
+            tabstate === 3
+              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[90px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
           {" "}
@@ -97,7 +103,9 @@ const ProductList = () => {
         <div
           onClick={() => action(4)}
           className={`${
-            tabstate === 4 ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[120px] h-[30px] grid content-center" : "bg-white text-xs grid content-center text-slate-500 "
+            tabstate === 4
+              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[120px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
           {" "}
@@ -106,7 +114,9 @@ const ProductList = () => {
         <div
           onClick={() => action(5)}
           className={`${
-            tabstate === 5 ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[120px] h-[30px] grid content-center" : "bg-white text-xs grid content-center text-slate-500 "
+            tabstate === 5
+              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[120px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
           {" "}
@@ -122,13 +132,22 @@ const ProductList = () => {
         {store.map((store) => (
           <div
             key={store.id}
-            className="border-1 border-slate-400 flex align-center justify-center  p-4 flex-col"
+            className="border-2 shadow-md border-slate-200  flex  justify-between align-center justify-center  flex-col"
           >
-            <img src={store.image} className="w-[200px] " />
-            <p>{store.title}</p>
-            <Link to={`/detail/${store.id}`}>
-              <button>View details</button>
-            </Link>
+            <div className=" flex justify-center align-center   h-[300px]">
+              <img
+                src={store.image}
+                className="w-[200px] h-[200px] mt-[30px]"
+              />
+            </div>
+            <div className="bg-pink-300 shadow-sm text-slate-900 grid text-sm content-center w-[372px] text-center p-4">
+              <p>{store.title}</p>
+              <Link to={`/detail/${store.id}`}>
+                <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                  View details
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -143,15 +162,22 @@ const ProductList = () => {
         {jewelery.map((jewel) => (
           <div
             key={jewel.id}
-            className="border-1 border-slate-400  flex align-center justify-center  p-4 flex-col"
+            className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
           >
-            <img src={jewel.image} className="w-[200px] " />
-            <p className="text-sm">{jewel.title}</p>
-            <Link to={`/detail/${jewel.id}`}>
-              <button classsName="border-2 p-[20px] border-red-300 bg-slate-500 text-white">
-                View details
-              </button>
-            </Link>
+            <div className=" flex justify-center align-center   h-[300px]">
+              <img
+                src={jewel.image}
+                className="w-[200px] h-[200px] mt-[30px]"
+              />
+            </div>
+            <div className="bg-pink-400 text-slate-100 grid text-sm content-center w-[372px] text-center p-4">
+              <p>{jewel.title}</p>
+              <Link to={`/detail/${jewel.id}`}>
+                <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                  View details
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -159,21 +185,30 @@ const ProductList = () => {
       <div
         className={`${
           tabstate === 3
-            ? "text-slate-900 grid grid-cols-3 gap-4flex justify-center align-center"
+            ? "text-slate-900 grid grid-cols-3 gap-4 flex justify-center align-center"
             : "hidden"
         }`}
       >
         {electron.map((item) => (
-          <div className="border-1 border-slate-400  flex align-center justify-center  p-4 flex-col">
-            <img src={item.image} className="w-[200px] " />
-            <p className="text-sm">{item.title}</p>
-            <Link to={`/detail/${item.id}`}>
-              <button>View details</button>
-              <button onClick={() => dispatch({ type: "ADD", payload: item })}>
-                ADD TO CART
-              </button>
-            </Link>
-          </div>
+           <div
+           key={item.id}
+           className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+         >
+           <div className=" flex justify-center align-center    h-[300px]">
+             <img
+               src={item.image}
+               className="w-[200px] h-[200px] mt-[30px]"
+             />
+           </div>
+           <div className="bg-pink-400 text-slate-100 grid text-sm content-center  w-[503px] text-center p-4">
+             <p>{item.title}</p>
+             <Link to={`/detail/${item.id}`}>
+               <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                 View details
+               </button>
+             </Link>
+           </div>
+         </div>
         ))}
       </div>
 
@@ -185,16 +220,25 @@ const ProductList = () => {
         }`}
       >
         {women.map((item) => (
-          <div
-            key={women.id}
-            className="border-1 border-slate-400  flex align-center justify-center  p-4 flex-col"
-          >
-            <img src={item.image} className="w-[200px] " />
-            <p className="text-sm">{item.title}</p>
-            <Link to={`/detail/${item.id}`}>
-              <button>View details</button>
-            </Link>
-          </div>
+           <div
+           key={item.id}
+           className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+         >
+           <div className=" flex justify-center align-center    h-[300px]">
+             <img
+               src={item.image}
+               className="w-[200px] h-[200px] mt-[30px]"
+             />
+           </div>
+           <div className="bg-pink-400 text-slate-100 grid text-sm content-center  w-[503px] text-center p-4">
+             <p>{item.title}</p>
+             <Link to={`/detail/${item.id}`}>
+               <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                 View details
+               </button>
+             </Link>
+           </div>
+         </div>
         ))}
       </div>
 
@@ -206,15 +250,24 @@ const ProductList = () => {
         }`}
       >
         {men.map((item) => (
-          <div
+            <div
             key={item.id}
-            className="border-1 border-slate-400  flex align-center justify-center  p-4 flex-col"
+            className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
           >
-            <img src={item.image} className="w-[200px] " />
-            <p className="text-sm">{item.title}</p>
-            <Link to={`/detail/${item.id}`}>
-              <button>View details</button>
-            </Link>
+            <div className=" flex justify-center align-center   h-[300px]">
+              <img
+                src={item.image}
+                className="w-[200px] h-[200px] mt-[30px]"
+              />
+            </div>
+            <div className="bg-pink-400 text-slate-100 grid text-sm content-center w-[372px] text-center p-4">
+              <p>{item.title}</p>
+              <Link to={`/detail/${item.id}`}>
+                <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                  View details
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
