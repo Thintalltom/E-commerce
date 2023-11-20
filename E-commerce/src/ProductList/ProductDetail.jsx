@@ -2,7 +2,9 @@ import React, { useState, useEffect,  useContext } from "react";
 import { useParams } from "react-router-dom";
 import { storeContext } from '../Context/Context'
 import { Link } from "react-router-dom";
+import {ToastContainer, toast} from 'react-toastify'
 import HashLoader from "react-spinners/HashLoader";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -19,6 +21,10 @@ const ProductDetail = () => {
     detailsInfo();
 
   }, [id]);
+
+  const Notify = () => {
+    toast('Added to cart')
+  }
 
   const [loading, setLoading] = useState(false);
 
@@ -47,15 +53,17 @@ const ProductDetail = () => {
       ) : (
         <div className="flex flex-col h-screen gap-4 p-4 ">
         <Link to='/'>
-        <button>back</button>
+        <button className="bg-slate-300  w-[100px] h-[40px] rounded-[10px] shadow-md hover:bg-slate-900 hover:text-white">back</button>
         </Link>
+        <p className="text-center text-2xl font-extrabold">Product detail</p>
         <div className=" flex justify-around"> 
         <div>
-         <p className="font-extrabold text-2xl">{category}</p>
+         
         
          <div className="flex  gap-4  ">
            <img src={image} className="w-[500px]" />
            <div className="w-[600px] gap-4">
+           <p ><span className="font-extrabold"> Category:</span> {category}</p>
            <p> <span className="font-extrabold"> Name:</span> {title}</p>
              <p>
                {" "}
@@ -64,7 +72,7 @@ const ProductDetail = () => {
              <p><span className="font-extrabold"> Quantity:</span>  {singleProduct.quantity = 1} </p>
              <p><span className="font-extrabold"> Price:</span> ${price}</p>
            
-             <button onClick={() => dispatch({type: 'ADD', payload:singleProduct})} className="border-2 rounded-[10px] shadow-md h-[50px] mt-4 hover:bg-slate-900 hover:text-white border-slate-300 w-[200px]">
+             <button onClick={() => dispatch({type: 'ADD', payload:singleProduct, Notify })} className="border-2 rounded-[10px] shadow-md h-[50px] mt-4 hover:bg-slate-900 hover:text-white border-slate-300 w-[200px]">
                Add to Cart
              </button>
            </div>
@@ -73,6 +81,7 @@ const ProductDetail = () => {
         </div>
        </div>
       )}
+      <ToastContainer />
     </div>
   );
 };
