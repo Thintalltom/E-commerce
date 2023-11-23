@@ -6,7 +6,7 @@ import {  BsFacebook,
 const Content = () => {
   return (
     <div className="flex justify-center align-center">
-      <div className="bg-pink-200 rounded-[10px] flex flex-row justify-center justify-around align-center  w-[80%] h-[25vw] mt-[20px] ">
+      <div className="bg-pink-200 rounded-[10px] flex flex-row justify-center justify-around align-center  w-[95%] h-[25vw] mt-[20px] ">
         <div className="flex p-9 justify-center  basis-1/2  align-center flex-col">
           <div>
             <p className="font-extrabold text-3xl text-slate-600">

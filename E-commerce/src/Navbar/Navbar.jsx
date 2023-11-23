@@ -18,7 +18,7 @@ const Navbar = () => {
         <p >Service</p>
         <p >Conduct</p>
         </div>
-        <div className='flex jus    <p>total:{total} </p>tify-between gap-9 text-slate-500 cursor-pointer'>
+        <div className='flex justify-between gap-9 text-slate-500 cursor-pointer'>
         <Link to='/cart'>
        <div className='flex  '>
          <p>

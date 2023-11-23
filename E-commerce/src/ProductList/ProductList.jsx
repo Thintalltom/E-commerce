@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
+import { BsHeart, BsHeartFill   } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { storeContext } from "../Context/Context";
 const ProductList = () => {
@@ -62,16 +63,19 @@ const ProductList = () => {
   };
   const globalContext = useContext(storeContext); // to access the data from the context
   const dispatch = globalContext.dispatch; // this adds the details of the product into an object
-  console.log(globalContext);
+  const [change, setChange] = useState(false)
 
+  const ChangeFunc = () => {
+    setChange(!change)
+  }
   return (
-    <div className=" gap-9 mt-4  cursor-pointer p-4">
-      <div className=" rounded-[10px] align-center justify-center flex  gap-9 p-4">
+    <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col">
+      <div className=" rounded-[10px] align-center justify-center flex  gap-9 p-4 ">
         <div
           onClick={() => action(1)}
           className={`${
             tabstate === 1
-              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[70px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[70px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
@@ -82,7 +86,7 @@ const ProductList = () => {
           onClick={() => action(2)}
           className={`${
             tabstate === 2
-              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[90px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[90px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
@@ -93,7 +97,7 @@ const ProductList = () => {
           onClick={() => action(3)}
           className={`${
             tabstate === 3
-              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[90px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[90px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
@@ -104,7 +108,7 @@ const ProductList = () => {
           onClick={() => action(4)}
           className={`${
             tabstate === 4
-              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[120px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[120px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
@@ -115,7 +119,7 @@ const ProductList = () => {
           onClick={() => action(5)}
           className={`${
             tabstate === 5
-              ? "   border-2 border-pink-500 rounded-[10px] text-center text-xs  w-[120px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[120px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 "
           }`}
         >
@@ -123,10 +127,10 @@ const ProductList = () => {
           mens clothings{" "}
         </div>
       </div>
-
+          <div>
       <div
         className={`${
-          tabstate === 1 ? "text-slate-900 grid grid-cols-4 gap-4 " : "hidden"
+          tabstate === 1 ? "text-slate-900 grid grid-cols-4 gap-4  " : "hidden"
         }`}
       >
         {store.map((store) => (
@@ -134,16 +138,22 @@ const ProductList = () => {
             key={store.id}
             className="border-2 shadow-md border-slate-200  flex  justify-between align-center justify-center  flex-col"
           >
-            <div className=" flex justify-center align-center   h-[300px]">
+            <div className=" flex justify-center align-center    h-[180px]">
               <img
                 src={store.image}
-                className="w-[200px] h-[200px] mt-[30px]"
+                className="w-[200px] h-[150px] mt-[30px]"
               />
             </div>
-            <div className="bg-pink-300 shadow-sm text-slate-900 grid text-sm content-center w-[372px] text-center p-4">
+            <div className=" shadow-sm text-slate-900 grid text-sm content-center w-[293px]  p-4">
               <p>{store.title}</p>
+              <div className="flex justify-between mt-[5px]">
+              <p> NGN{store.price}</p>
+              <div onClick={ChangeFunc}>
+              {change ? <BsHeartFill className='text-red-600' />  : <BsHeart />  }
+              </div>
+              </div>
               <Link to={`/detail/${store.id}`}>
-                <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                <button className="bg-slate-900 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
                   View details
                 </button>
               </Link>
@@ -270,6 +280,7 @@ const ProductList = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
