@@ -1,8 +1,11 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
-import { BsHeart, BsHeartFill   } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import { storeContext } from "../Context/Context";
+import Allproduct from "./Allproduct";
+import WomenProduct from "./WomenProduct";
+import MenProduct from "./MenProduct";
+import ElectronicProduct from "./ElectronicProduct";
+import { Link } from "react-router-dom";
 const ProductList = () => {
   const [store, setStore] = useState([]);
   //fetch the products from the api
@@ -63,11 +66,17 @@ const ProductList = () => {
   };
   const globalContext = useContext(storeContext); // to access the data from the context
   const dispatch = globalContext.dispatch; // this adds the details of the product into an object
-  const [change, setChange] = useState(false)
+// for adding product to a wishlist
+  const [wishlist, setWishlist] = useState([]);
 
-  const ChangeFunc = () => {
-    setChange(!change)
-  }
+  const addToWishlist = (productId, isAdded) => {
+    if (isAdded) {
+      setWishlist([...wishlist, productId]);
+    } else {
+      setWishlist(wishlist.filter((id) => id !== productId));
+    }
+  };
+
   return (
     <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col">
       <div className=" rounded-[10px] align-center justify-center flex  gap-9 p-4 ">
@@ -127,160 +136,111 @@ const ProductList = () => {
           mens clothings{" "}
         </div>
       </div>
-          <div>
-      <div
-        className={`${
-          tabstate === 1 ? "text-slate-900 grid grid-cols-4 gap-4  " : "hidden"
-        }`}
-      >
-        {store.map((store) => (
-          <div
-            key={store.id}
-            className="border-2 shadow-md border-slate-200  flex  justify-between align-center justify-center  flex-col"
-          >
-            <div className=" flex justify-center align-center    h-[180px]">
-              <img
-                src={store.image}
-                className="w-[200px] h-[150px] mt-[30px]"
-              />
-            </div>
-            <div className=" shadow-sm text-slate-900 grid text-sm content-center w-[293px]  p-4">
-              <p>{store.title}</p>
-              <div className="flex justify-between mt-[5px]">
-              <p> NGN{store.price}</p>
-              <div onClick={ChangeFunc}>
-              {change ? <BsHeartFill className='text-red-600' />  : <BsHeart />  }
-              </div>
-              </div>
-              <Link to={`/detail/${store.id}`}>
-                <button className="bg-slate-900 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
-                  View details
-                </button>
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div
-        className={`${
-          tabstate === 2
-            ? "text-slate-900 grid grid-cols-4 gap-4 justify-items-center "
-            : "hidden"
-        }`}
-      >
-        {jewelery.map((jewel) => (
-          <div
-            key={jewel.id}
-            className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
-          >
-            <div className=" flex justify-center align-center   h-[300px]">
-              <img
-                src={jewel.image}
-                className="w-[200px] h-[200px] mt-[30px]"
-              />
-            </div>
-            <div className="bg-pink-400 text-slate-100 grid text-sm content-center w-[372px] text-center p-4">
-              <p>{jewel.title}</p>
-              <Link to={`/detail/${jewel.id}`}>
-                <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
-                  View details
-                </button>
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div
-        className={`${
-          tabstate === 3
-            ? "text-slate-900 grid grid-cols-3 gap-4 flex justify-center align-center"
-            : "hidden"
-        }`}
-      >
-        {electron.map((item) => (
-           <div
-           key={item.id}
-           className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
-         >
-           <div className=" flex justify-center align-center    h-[300px]">
-             <img
-               src={item.image}
-               className="w-[200px] h-[200px] mt-[30px]"
-             />
-           </div>
-           <div className="bg-pink-400 text-slate-100 grid text-sm content-center  w-[503px] text-center p-4">
-             <p>{item.title}</p>
-             <Link to={`/detail/${item.id}`}>
-               <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
-                 View details
-               </button>
-             </Link>
-           </div>
-         </div>
-        ))}
-      </div>
-
-      <div
-        className={`${
-          tabstate === 4
-            ? "text-slate-900 grid grid-cols-3 gap-4 flex justify-center align-center"
-            : "hidden"
-        }`}
-      >
-        {women.map((item) => (
-           <div
-           key={item.id}
-           className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
-         >
-           <div className=" flex justify-center align-center    h-[300px]">
-             <img
-               src={item.image}
-               className="w-[200px] h-[200px] mt-[30px]"
-             />
-           </div>
-           <div className="bg-pink-400 text-slate-100 grid text-sm content-center  w-[503px] text-center p-4">
-             <p>{item.title}</p>
-             <Link to={`/detail/${item.id}`}>
-               <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
-                 View details
-               </button>
-             </Link>
-           </div>
-         </div>
-        ))}
-      </div>
-
-      <div
-        className={`${
-          tabstate === 5
-            ? "text-slate-900 grid grid-cols-4 gap-4 flex justify-center align-center"
-            : "hidden"
-        }`}
-      >
-        {men.map((item) => (
+      <div>
+        <div
+          className={`${
+            tabstate === 1
+              ? "text-slate-900 grid grid-cols-4 gap-4  "
+              : "hidden"
+          }`}
+        >
+          {store.map((store) => (
             <div
-            key={item.id}
-            className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
-          >
-            <div className=" flex justify-center align-center   h-[300px]">
-              <img
-                src={item.image}
-                className="w-[200px] h-[200px] mt-[30px]"
+              key={store.id}
+              className="border-2 shadow-md border-slate-200  flex  justify-between align-center justify-center  flex-col"
+            >
+              <Allproduct
+                image={store.image}
+                title={store.title}
+                price={store.price}
+                id={store.id}
+                addToWishlist={addToWishlist}
               />
             </div>
-            <div className="bg-pink-400 text-slate-100 grid text-sm content-center w-[372px] text-center p-4">
-              <p>{item.title}</p>
-              <Link to={`/detail/${item.id}`}>
-                <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
-                  View details
-                </button>
-              </Link>
+          ))}
+        </div>
+
+        <div
+          className={`${
+            tabstate === 2
+              ? "text-slate-900 grid grid-cols-4 gap-4 justify-items-center "
+              : "hidden"
+          }`}
+        >
+          {jewelery.map((jewel) => (
+            <div
+              key={jewel.id}
+              className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+            >
+              <div className=" flex justify-center align-center   h-[300px]">
+                <img
+                  src={jewel.image}
+                  className="w-[200px] h-[200px] mt-[30px]"
+                />
+              </div>
+              <div className="bg-pink-400 text-slate-100 grid text-sm content-center w-[372px] text-center p-4">
+                <p>{jewel.title}</p>
+                <Link to={`/detail/${jewel.id}`}>
+                  <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
+                    View details
+                  </button>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+
+        <div
+          className={`${
+            tabstate === 3
+              ? "text-slate-900 grid grid-cols-3 gap-4 flex justify-center align-center"
+              : "hidden"
+          }`}
+        >
+          {electron.map((item) => (
+            <div
+              key={item.id}
+              className="border-2 w-[300px] border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+            >
+             <ElectronicProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
+              
+            </div>
+          ))}
+        </div>
+
+        <div
+          className={`${
+            tabstate === 4
+              ? "text-slate-900  grid grid-cols-3 gap-4 flex justify-center align-center"
+              : "hidden"
+          }`}
+        >
+          {women.map((item) => (
+            <div
+              key={item.id}
+              className="border-2 w-[300px]   flex  justify-between align-center justify-center  flex-col"
+            >
+              <WomenProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
+            </div>
+          ))}
+        </div>
+
+        <div
+          className={`${
+            tabstate === 5
+              ? "text-slate-900 grid grid-cols-4 gap-4 flex justify-center align-center"
+              : "hidden"
+          }`}
+        >
+          {men.map((item) => (
+            <div
+              key={item.id}
+              className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+            >
+             <MenProduct price={item.price} id = {item.id} title={item.title} image={item.image}/>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
