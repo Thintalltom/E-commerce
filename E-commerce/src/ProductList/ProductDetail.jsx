@@ -1,7 +1,7 @@
 import React, { useState, useEffect,  useContext } from "react";
 import { useParams } from "react-router-dom";
 import { storeContext } from '../Context/Context'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {ToastContainer, toast} from 'react-toastify'
 import HashLoader from "react-spinners/HashLoader";
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ProductDetail = () => {
   const { id } = useParams();
   const [singleProduct, setSingleProduct] = useState({});
-
+  const navigate= useNavigate()
 
   const detailsInfo = () => {
     fetch(`https://fakestoreapi.com/products/${id} `)
@@ -39,7 +39,10 @@ const ProductDetail = () => {
   const dispatch = globalContext.dispatch // this adds the details of the product into an object
   console.log(globalContext)
   const { title, image, price, category, rating, description } = singleProduct;
-   
+  const AddProduct = () => {
+    dispatch({type: 'ADD', payload:singleProduct })
+    navigate('/')
+  }
   return (
     <div>
       {loading ? (
@@ -72,7 +75,7 @@ const ProductDetail = () => {
              <p><span className="font-extrabold"> Quantity:</span>  {singleProduct.quantity = 1} </p>
              <p><span className="font-extrabold"> Price:</span> ${price}</p>
            
-             <button onClick={() => dispatch({type: 'ADD', payload:singleProduct, Notify })} className="border-2 rounded-[10px] shadow-md h-[50px] mt-4 hover:bg-slate-900 hover:text-white border-slate-300 w-[200px]">
+             <button onClick={AddProduct} className="border-2 rounded-[10px] shadow-md h-[50px] mt-4 hover:bg-slate-900 hover:text-white border-slate-300 w-[200px]">
                Add to Cart
              </button>
            </div>

@@ -5,6 +5,7 @@ import Allproduct from "./Allproduct";
 import WomenProduct from "./WomenProduct";
 import MenProduct from "./MenProduct";
 import ElectronicProduct from "./ElectronicProduct";
+import JeweleryProduct from "./JeweleryProduct";
 import { Link } from "react-router-dom";
 const ProductList = () => {
   const [store, setStore] = useState([]);
@@ -167,25 +168,12 @@ const ProductList = () => {
               : "hidden"
           }`}
         >
-          {jewelery.map((jewel) => (
+          {jewelery.map((item) => (
             <div
-              key={jewel.id}
-              className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+              key={item.id}
+              className="border-2  flex  justify-between align-center justify-center  flex-col"
             >
-              <div className=" flex justify-center align-center   h-[300px]">
-                <img
-                  src={jewel.image}
-                  className="w-[200px] h-[200px] mt-[30px]"
-                />
-              </div>
-              <div className="bg-pink-400 text-slate-100 grid text-sm content-center w-[372px] text-center p-4">
-                <p>{jewel.title}</p>
-                <Link to={`/detail/${jewel.id}`}>
-                  <button className="bg-slate-500 text-white rounded-[10px] h-[50px] hover:bg-slate-900 hover:shadow-md shadow-sm w-[130px] p-[2px] mt-4 ">
-                    View details
-                  </button>
-                </Link>
-              </div>
+           <JeweleryProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
             </div>
           ))}
         </div>
