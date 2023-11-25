@@ -55,7 +55,7 @@ const Navbar = () => {
 
           <div onClick={handleClick}>{open ? <p>close</p> : <p>open</p>}</div>
         </div>
-        <div className={open ? "header2 shadow-sm lg:hidden" : 'header3 lg:hidden'}>
+        <div className={!open ? "header2 shadow-sm lg:hidden" : 'header3 lg:hidden'}>
         <p>Home</p>
           <p>Product</p>
           <p>Search</p>
