@@ -1,0 +1,12 @@
+@media only screen and (max-width: 600px) {
+    .smallScreen
+    {
+        display: none
+       
+    }
+    .smallScreen2
+    {
+        z-index: 2;
+        
+    }
+}

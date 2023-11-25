@@ -6,12 +6,12 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Home = () => {
   return (
-      <div className=' h-screen flex justify-center items-center align-center'>
-        <div className=' h-screen w-[80%]'>
+      <div >
+     
     <Navbar />
     <Content />
     <ProductList />
-    </div>
+   
     </div>
   )
 }

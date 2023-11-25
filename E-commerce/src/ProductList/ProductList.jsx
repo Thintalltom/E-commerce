@@ -6,14 +6,21 @@ import WomenProduct from "./WomenProduct";
 import MenProduct from "./MenProduct";
 import ElectronicProduct from "./ElectronicProduct";
 import JeweleryProduct from "./JeweleryProduct";
+import MoonLoader from "react-spinners/MoonLoader";
 import { Link } from "react-router-dom";
 const ProductList = () => {
   const [store, setStore] = useState([]);
+  const [loading, setLoading] = useState(false);
   //fetch the products from the api
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    setLoading(true);
+    const timer = setTimeout(() => {
+      fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setStore(json));
+      setLoading(false)
+    }, 3000)
+  
   }, []);
 
   const [jewelery, setJewelery] = useState([]);
@@ -24,7 +31,11 @@ const ProductList = () => {
       .then((json) => setJewelery(json));
   };
   useEffect(() => {
-    fetchJewelery();
+    const timer = setTimeout(() => {
+      fetchJewelery();
+      setLoading(false)
+    }, 3000)
+  
   }, []);
 
   const [electron, setElectron] = useState([]);
@@ -37,6 +48,7 @@ const ProductList = () => {
   useEffect(() => {
     fetchElectronic();
   }, []);
+
 
   const [women, setWomen] = useState([]);
 
@@ -145,7 +157,14 @@ const ProductList = () => {
               : "hidden"
           }`}
         >
-          {store.map((store) => (
+          {loading &&  <div className="flex justify-center align-center items-center w-[1200px]  ">
+          <MoonLoader color={"#060606" }
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader" />
+          </div> }
+          {!loading && store.map((store) => (
             <div
               key={store.id}
               className="border-2 shadow-md border-slate-200  flex  justify-between align-center justify-center  flex-col"
@@ -168,7 +187,14 @@ const ProductList = () => {
               : "hidden"
           }`}
         >
-          {jewelery.map((item) => (
+           {loading &&  <div className="flex justify-center align-center items-center w-[1200px] bg-green-500 ">
+          <MoonLoader color={"#060606" }
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader" />
+          </div> }
+          {!loading && jewelery.map((item) => (
             <div
               key={item.id}
               className="border-2  flex  justify-between align-center justify-center  flex-col"
