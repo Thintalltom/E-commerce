@@ -1,0 +1,38 @@
+@media only screen and (max-width: 800px) {
+
+    .box .box2 .box3 .box4 
+    {
+        font-size: xx-small;
+    }
+    .HolderS .imageS
+    {
+       width: 100px;
+    }
+    .boxHold .boxHolder
+    {
+        height: 20vh;
+    }
+    .firstBox .allProduct
+    {
+        display: grid;
+        grid-template-columns: auto auto;
+        
+    }
+    .allProduct .prod{
+       
+        width: 160px;
+    
+    }
+
+     .prodImg .proImg
+    {
+        width: 100px;
+    }
+    .prodBox .prodText
+    {
+       
+        width: 157px;
+        font-size: x-small;
+        line-height: 1.2;
+    }
+}

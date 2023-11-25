@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { storeContext } from '../Context/Context'
+import './ProductList.css'
 const Allproduct = ({ image, title, price, id }) => {
   const [iswishList, setIsWishList] = useState(false);
   const [wishlist, setWishlist] = useState([]);
@@ -32,14 +33,14 @@ const Allproduct = ({ image, title, price, id }) => {
   
   
   return (
-    <div>
-      <div className=" flex justify-center align-center    h-[180px]">
-        <img src={image} className="w-[200px] h-[150px] mt-[30px]" />
+    <div className="prodBox">
+      <div className=" flex justify-center align-center prodImg    h-[180px]">
+        <img src={image} className="w-[200px] proImg h-[150px] mt-[30px]" />
       </div>
-      <div className=" shadow-sm text-slate-900 grid text-sm content-center w-[293px]  p-4">
+      <div className=" prodText shadow-sm text-slate-900 grid text-sm content-center w-[293px]  p-4">
         <p>{title}</p>
         <div className="flex justify-between mt-[5px]">
-          <p> NGN{price}</p>
+          <p className="sm:font-extrabold lg:font-bold"> NGN{price}</p>
           <div onClick={ChangeFunc}>
             {iswishList ? <div onClick={isAdded}><BsHeartFill className="text-red-600" /></div> : <BsHeart />}
           </div>

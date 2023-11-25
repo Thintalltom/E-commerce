@@ -11,8 +11,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(true);
   const handleClick = () => setOpen(!open);
   return (
-    <>
-      <div className="flex justify-around  p-4">
+    <div className="smallScreen0">
+      <div className="flex justify-around smallScreen1  p-4">
         <div>
           <p className="font-extrabold">
             {" "}
@@ -22,8 +22,8 @@ const Navbar = () => {
         <div className="flex justify-between smallScreen gap-9 text-slate-500 cursor-pointer">
           <p>Home</p>
           <p>Product</p>
-          <p>Service</p>
-          <p>Conduct</p>
+          <p>Search</p>
+         
         </div>
         <div className="flex justify-between gap-9 text-slate-500 cursor-pointer">
           <Link to="/cart">
@@ -40,7 +40,29 @@ const Navbar = () => {
       </div>
 
       {/*for small screen */}
-    </>
+      <div>
+        <div className="header shadow-md lg:hidden">
+          <p className="font-extrabold">
+            {" "}
+            <span className="text-pink-500"> My</span>-shop
+          </p>
+          <div className="flex">
+            <p>
+              <BsCart2 />
+            </p>
+            <p className="">{state.length}</p>
+          </div>
+
+          <div onClick={handleClick}>{open ? <p>close</p> : <p>open</p>}</div>
+        </div>
+        <div className={open ? "header2 shadow-sm lg:hidden" : 'header3 lg:hidden'}>
+        <p>Home</p>
+          <p>Product</p>
+          <p>Search</p>
+         
+        </div>
+      </div>
+    </div>
   );
 };
 

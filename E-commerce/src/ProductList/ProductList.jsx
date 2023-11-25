@@ -8,6 +8,7 @@ import ElectronicProduct from "./ElectronicProduct";
 import JeweleryProduct from "./JeweleryProduct";
 import MoonLoader from "react-spinners/MoonLoader";
 import { Link } from "react-router-dom";
+import './ProductList.css'
 const ProductList = () => {
   const [store, setStore] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -91,14 +92,14 @@ const ProductList = () => {
   };
 
   return (
-    <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col">
-      <div className=" rounded-[10px] align-center justify-center flex  gap-9 p-4 ">
+    <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col ScrollBar0">
+      <div className=" rounded-[10px] align-center justify-center flex  gap-9 p-4 ScrollBar">
         <div
           onClick={() => action(1)}
           className={`${
             tabstate === 1
-              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[70px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 "
+              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2  w-[70px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
           {" "}
@@ -108,8 +109,8 @@ const ProductList = () => {
           onClick={() => action(2)}
           className={`${
             tabstate === 2
-              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[90px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 "
+              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2  w-[90px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
           {" "}
@@ -119,8 +120,8 @@ const ProductList = () => {
           onClick={() => action(3)}
           className={`${
             tabstate === 3
-              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[90px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 "
+              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2 w-[90px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
           {" "}
@@ -130,8 +131,8 @@ const ProductList = () => {
           onClick={() => action(4)}
           className={`${
             tabstate === 4
-              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[120px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 "
+              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2 w-[120px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
           {" "}
@@ -141,19 +142,19 @@ const ProductList = () => {
           onClick={() => action(5)}
           className={`${
             tabstate === 5
-              ? "   border-b-2 border-b-pink-500  text-center text-xs  w-[120px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 "
+              ? "   border-b-2 border-b-pink-500  text-center text-xs   w-[120px] h-[30px] grid content-center"
+              : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
           {" "}
           mens clothings{" "}
         </div>
       </div>
-      <div>
+      <div className="firstBox">
         <div
           className={`${
             tabstate === 1
-              ? "text-slate-900 grid grid-cols-4 gap-4  "
+              ? "text-slate-900 grid grid-cols-4 gap-4 allProduct "
               : "hidden"
           }`}
         >
@@ -167,7 +168,7 @@ const ProductList = () => {
           {!loading && store.map((store) => (
             <div
               key={store.id}
-              className="border-2 shadow-md border-slate-200  flex  justify-between align-center justify-center  flex-col"
+              className="border-2 shadow-md border-slate-200 prod  flex  justify-between align-center justify-center  flex-col"
             >
               <Allproduct
                 image={store.image}

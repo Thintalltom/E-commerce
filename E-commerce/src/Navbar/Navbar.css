@@ -1,5 +1,5 @@
-@media only screen and (max-width: 600px) {
-    .smallScreen
+@media only screen and (max-width: 800px) {
+    .smallScreen1 .smallScreen
     {
         display: none
        
@@ -8,5 +8,32 @@
     {
         z-index: 2;
         
+    }
+    .smallScreen0 .smallScreen1{
+        display: none;
+    }
+    .header
+    {
+        display: flex;
+        flex-direction: row ;
+        background-color: rgba(151, 203, 233, 0.253);
+        padding: 10px;
+        justify-content: space-around;
+       
+    }
+    .header2
+    {
+        background-color: rgba(151, 203, 233, 0.253);
+        height: 50vh;
+        display: flex ;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:60px;
+    }
+   
+    .header3
+    {
+        display: none;
     }
 }
