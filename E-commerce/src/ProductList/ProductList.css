@@ -1,29 +1,7 @@
-@media only screen and (max-width: 600px) {
-.ScrollBar0 .ScrollBar{
-
-height: 20vh;
-
-overflow-y: hidden;
-padding: 2px;
-display: grid;
-grid-template-columns: auto auto auto ;
-gap: 20px;
-}
-.gridText
-{
-  
-   display: flex;
-   align-content: center;
-   justify-content: center;
-   align-items: center;
-}
-.gridText2
-{
-   
-    height: 50px;
-}
-.gridText3
-{
-    width: 70px;
-}
-}
+.firstBox .truncate-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: white !important;
+    max-width: 50%; /* You can adjust the max-width as needed */
+  }

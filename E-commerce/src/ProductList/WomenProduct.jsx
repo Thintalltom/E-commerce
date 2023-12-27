@@ -23,8 +23,8 @@ const WomenProduct = ({ title, id, image, price }) => {
     console.log(wishList)
   };
   return (
-    <div className=" w-[300px]">
-      <div className=" w-[300px] flex justify-center align-center    h-[180px]">
+    <div className=" w-[300px] ">
+      <div className=" w-[300px] flex justify-center align-center     h-[180px]">
         <img src={image} className="w-[200px] h-[150px] mt-[30px]" />
       </div>
       <div className=" shadow-sm text-slate-900 grid text-sm content-center w-[293px]  p-4">

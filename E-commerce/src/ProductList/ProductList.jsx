@@ -93,12 +93,12 @@ const ProductList = () => {
 
   return (
     <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col ScrollBar0">
-      <div className=" rounded-[10px] align-center justify-center flex  gap-9 p-4 ScrollBar">
+      <div className="  rounded-[10px] align-center justify-center flex  gap-9 p-4 ScrollBar">
         <div
           onClick={() => action(1)}
           className={`${
             tabstate === 1
-              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2  w-[70px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-slate-500  text-center text-xs gridText2  w-[70px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
@@ -109,7 +109,7 @@ const ProductList = () => {
           onClick={() => action(2)}
           className={`${
             tabstate === 2
-              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2  w-[90px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-slate-500  text-center text-xs gridText2  w-[90px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
@@ -120,7 +120,7 @@ const ProductList = () => {
           onClick={() => action(3)}
           className={`${
             tabstate === 3
-              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2 w-[90px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-slate-500  text-center text-xs gridText2 w-[90px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
@@ -131,7 +131,7 @@ const ProductList = () => {
           onClick={() => action(4)}
           className={`${
             tabstate === 4
-              ? "   border-b-2 border-b-pink-500  text-center text-xs gridText2 w-[120px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-slate-500 text-center text-xs gridText2 w-[120px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
@@ -150,25 +150,19 @@ const ProductList = () => {
           mens clothings{" "}
         </div>
       </div>
-      <div className="firstBox">
+      <div >
         <div
           className={`${
             tabstate === 1
-              ? "text-slate-900 grid grid-cols-4 gap-4 allProduct "
+              ? "text-slate-900 grid xxs:gap-[10px] xxs:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2  "
               : "hidden"
           }`}
         >
-          {loading &&  <div className="flex justify-center align-center items-center w-[1200px]  ">
-          <MoonLoader color={"#060606" }
-            loading={loading}
-            size={100}
-            aria-label="Loading Spinner"
-            data-testid="loader" />
-          </div> }
-          {!loading && store.map((store) => (
+          
+          {store.map((store) => (
             <div
               key={store.id}
-              className="border-2 shadow-md border-slate-200 prod  flex  justify-between align-center justify-center  flex-col"
+              className="border-2  xs:w-[200px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
             >
               <Allproduct
                 image={store.image}
@@ -188,14 +182,8 @@ const ProductList = () => {
               : "hidden"
           }`}
         >
-           {loading &&  <div className="flex justify-center align-center items-center w-[1200px] bg-green-500 ">
-          <MoonLoader color={"#060606" }
-            loading={loading}
-            size={100}
-            aria-label="Loading Spinner"
-            data-testid="loader" />
-          </div> }
-          {!loading && jewelery.map((item) => (
+          
+          { jewelery.map((item) => (
             <div
               key={item.id}
               className="border-2  flex  justify-between align-center justify-center  flex-col"
@@ -226,14 +214,14 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 4
-              ? "text-slate-900  grid grid-cols-3 gap-4 flex justify-center align-center"
+              ? "text-slate-900   grid grid-cols-3 gap-4  p-4 items-center"
               : "hidden"
           }`}
         >
           {women.map((item) => (
             <div
               key={item.id}
-              className="border-2 w-[300px]   flex  justify-between align-center justify-center  flex-col"
+              className="border-2 w-[300px]    flex  justify-between align-center justify-center  flex-col"
             >
               <WomenProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
             </div>
@@ -250,7 +238,7 @@ const ProductList = () => {
           {men.map((item) => (
             <div
               key={item.id}
-              className="border-2 border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+              className="border-[0.5px] border-slate-400 flex w-[300px]   justify-between align-center justify-center  flex-col"
             >
              <MenProduct price={item.price} id = {item.id} title={item.title} image={item.image}/>
             </div>
