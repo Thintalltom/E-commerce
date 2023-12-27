@@ -22,13 +22,21 @@ const WomenProduct = ({ title, id, image, price }) => {
     isAdded(); // Call isAdded to handle wishlist changes
     console.log(wishList)
   };
+
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.substr(0, maxLength) + '...';
+  };
+  
   return (
-    <div className=" w-[300px] ">
-      <div className=" w-[300px] flex justify-center align-center     h-[180px]">
-        <img src={image} className="w-[200px] h-[150px] mt-[30px]" />
+    <div >
+      <div className=" flex justify-center align-center     h-[180px]">
+      <img src={image} className="lg:w-[200px] sm:w-[150px] xxs:w-[80px] md:w-[200px] xs:w-[100px] h-[150px] mt-[30px] bg-red-500" />
       </div>
-      <div className=" shadow-sm text-slate-900 grid text-sm content-center w-[293px]  p-4">
-        <p>{title}</p>
+      <div className=" xs:w-[200px] sm:w-[275px]  md:w-[345px]  shadow-sm text-slate-900 grid text-sm content-center lg:w-[345px]  p-4 ">
+      <p className="text-center ">{truncateText(title, 50)}</p>
         <div className="flex justify-between mt-[5px]">
           <p> NGN {price}</p>
           <div onClick={ChangeFunc}>
@@ -39,11 +47,13 @@ const WomenProduct = ({ title, id, image, price }) => {
             )}
           </div>
         </div>
+        <div className="flex justify-center items-center ">
         <Link to={`/detail/${id}`}>
-          <button className="bg-slate-900 text-white  h-[30px] text-sm  hover:shadow-md shadow-sm w-[90px] p-[2px] mt-4">
+          <button className="bg-slate-900 text-white xxs:w-[200px] h-[50px] rounded-[10px] text-sm  hover:shadow-md shadow-sm  xs:w-[150px] lg:w-[200px] p-[2px] mt-4 ">
             View details
           </button>
         </Link>
+        </div>
       </div>
     </div>
   );

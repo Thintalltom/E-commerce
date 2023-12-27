@@ -8,7 +8,7 @@ import ElectronicProduct from "./ElectronicProduct";
 import JeweleryProduct from "./JeweleryProduct";
 import MoonLoader from "react-spinners/MoonLoader";
 import { Link } from "react-router-dom";
-import './ProductList.css'
+import "./ProductList.css";
 const ProductList = () => {
   const [store, setStore] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,11 +17,10 @@ const ProductList = () => {
     setLoading(true);
     const timer = setTimeout(() => {
       fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setStore(json));
-      setLoading(!loading)
-    }, 3000)
-  
+        .then((res) => res.json())
+        .then((json) => setStore(json));
+      setLoading(!loading);
+    }, 3000);
   }, []);
 
   const [jewelery, setJewelery] = useState([]);
@@ -34,9 +33,8 @@ const ProductList = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchJewelery();
-      setLoading(false)
-    }, 3000)
-  
+      setLoading(false);
+    }, 3000);
   }, []);
 
   const [electron, setElectron] = useState([]);
@@ -49,7 +47,6 @@ const ProductList = () => {
   useEffect(() => {
     fetchElectronic();
   }, []);
-
 
   const [women, setWomen] = useState([]);
 
@@ -80,7 +77,7 @@ const ProductList = () => {
   };
   const globalContext = useContext(storeContext); // to access the data from the context
   const dispatch = globalContext.dispatch; // this adds the details of the product into an object
-// for adding product to a wishlist
+  // for adding product to a wishlist
   const [wishlist, setWishlist] = useState([]);
 
   const addToWishlist = (productId, isAdded) => {
@@ -92,8 +89,8 @@ const ProductList = () => {
   };
 
   return (
-    <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col ScrollBar0">
-      <div className="  rounded-[10px] align-center justify-center flex  gap-9 p-4 ScrollBar">
+    <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col ">
+      <div className="xxs:grid xxs:grid-cols-3 xs:flex    rounded-[10px] align-center justify-center flex  gap-9 p-4 ">
         <div
           onClick={() => action(1)}
           className={`${
@@ -114,7 +111,7 @@ const ProductList = () => {
           }`}
         >
           {" "}
-          jewelery{" "}
+          Jewelery{" "}
         </div>
         <div
           onClick={() => action(3)}
@@ -142,27 +139,26 @@ const ProductList = () => {
           onClick={() => action(5)}
           className={`${
             tabstate === 5
-              ? "   border-b-2 border-b-pink-500  text-center text-xs   w-[120px] h-[30px] grid content-center"
+              ? "   border-b-2 border-b-slate-500  text-center text-xs   w-[120px] h-[30px] grid content-center"
               : "bg-white text-xs grid content-center text-slate-500 gridText"
           }`}
         >
           {" "}
-          mens clothings{" "}
+          Mens clothings{" "}
         </div>
       </div>
-      <div >
+      <div>
         <div
           className={`${
             tabstate === 1
-              ? "text-slate-900 grid xxs:gap-[10px] xxs:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2  "
+              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-3 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2  "
               : "hidden"
           }`}
-        >
-          
+          >
           {store.map((store) => (
             <div
               key={store.id}
-              className="border-2  xs:w-[200px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
+              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
             >
               <Allproduct
                 image={store.image}
@@ -178,17 +174,21 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 2
-              ? "text-slate-900 grid grid-cols-4 gap-4 justify-items-center "
+              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-2 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
               : "hidden"
           }`}
-        >
-          
-          { jewelery.map((item) => (
+          >
+          {jewelery.map((item) => (
             <div
               key={item.id}
-              className="border-2  flex  justify-between align-center justify-center  flex-col"
+              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
             >
-           <JeweleryProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
+              <JeweleryProduct
+                price={item.price}
+                id={item.id}
+                title={item.title}
+                image={item.image}
+              />
             </div>
           ))}
         </div>
@@ -196,17 +196,21 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 3
-              ? "text-slate-900 grid grid-cols-3 gap-4 flex justify-center align-center"
+              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-3 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
               : "hidden"
           }`}
         >
           {electron.map((item) => (
             <div
               key={item.id}
-              className="border-2 w-[300px] border-pink-600 border-slate-400 flex  justify-between align-center justify-center  flex-col"
+              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
             >
-             <ElectronicProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
-              
+              <ElectronicProduct
+                price={item.price}
+                id={item.id}
+                title={item.title}
+                image={item.image}
+              />
             </div>
           ))}
         </div>
@@ -214,16 +218,21 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 4
-              ? "text-slate-900   grid grid-cols-3 gap-4  p-4 items-center"
+              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-3 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
               : "hidden"
           }`}
         >
           {women.map((item) => (
             <div
               key={item.id}
-              className="border-2 w-[300px]    flex  justify-between align-center justify-center  flex-col"
+              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
             >
-              <WomenProduct price={item.price} id = {item.id} title={item.title} image={item.image} />
+              <WomenProduct
+                price={item.price}
+                id={item.id}
+                title={item.title}
+                image={item.image}
+              />
             </div>
           ))}
         </div>
@@ -231,16 +240,21 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 5
-              ? "text-slate-900 grid grid-cols-4 gap-4 flex justify-center align-center"
+              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-2 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
               : "hidden"
           }`}
         >
           {men.map((item) => (
             <div
               key={item.id}
-              className="border-[0.5px] border-slate-400 flex w-[300px]   justify-between align-center justify-center  flex-col"
+              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
             >
-             <MenProduct price={item.price} id = {item.id} title={item.title} image={item.image}/>
+              <MenProduct
+                price={item.price}
+                id={item.id}
+                title={item.title}
+                image={item.image}
+              />
             </div>
           ))}
         </div>

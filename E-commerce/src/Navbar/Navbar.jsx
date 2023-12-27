@@ -40,22 +40,26 @@ const Navbar = () => {
       </div>
 
       {/*for small screen */}
-      <div>
-        <div className="header shadow-md lg:hidden">
+      <div >
+        <div className="header shadow-md lg:hidden ">
           <p className="font-extrabold">
             {" "}
             <span className="text-pink-500"> My</span>-shop
           </p>
+          <Link to="/cart">
           <div className="flex">
+   
             <p>
               <BsCart2 />
             </p>
             <p className="">{state.length}</p>
+          
           </div>
+          </Link>
 
           <div onClick={handleClick}>{open ? <p>close</p> : <p>open</p>}</div>
         </div>
-        <div className={!open ? "header2 shadow-sm lg:hidden" : 'header3 lg:hidden'}>
+        <div className={!open ? "header2 shadow-sm lg:hidden md:hidden" : 'header3 lg:hidden'}>
         <p>Home</p>
           <p>Product</p>
           <p>Search</p>
