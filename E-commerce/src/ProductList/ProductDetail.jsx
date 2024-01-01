@@ -36,7 +36,6 @@ const ProductDetail = () => {
 
   const globalContext = useContext(storeContext); // to access the data from the context
   const dispatch = globalContext.dispatch; // this adds the details of the product into an object
-  console.log(globalContext);
   const { title, image, price, category, rating, description } = singleProduct;
   const AddProduct = () => {
     dispatch({ type: "ADD", payload: singleProduct });

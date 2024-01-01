@@ -61,14 +61,14 @@ const Cart = () => {
             {state.map((item, index) => (
               <div
                 key={item.id}
-                className="flex p-4 flex-col  gap-[20px] shadow-md w-[800px]  border-2  mt-4 justify-between"
+                className="flex p-4 flex-col bg-red-500  gap-[20px] shadow-md w-[800px]  border-2  mt-4 justify-between"
               >
-                <div className="flex justify-around ">
+                <div className="flex justify-around xs:flex-col xxs:flex-col sm:flex-col ">
                   <img src={item.image} className="w-[100px]" />
                   <p>{item.title}</p>
                   <p>NGN {item.price}</p> <br />
                 </div>
-                <div className=" flex gap-4 flex-row-reverse justify-between">
+                <div className=" flex gap-4 flex-row-reverse justify-between xs:flex-col xxs:flex-col sm:flex-col">
                   <div className="flex gap-4">
                   <div
                     className=" p-[6px] h-[40px] "
@@ -101,12 +101,12 @@ const Cart = () => {
                 </div>
               </div>
             ))}
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-4 xxs:gap-[10rem]">
             <p>Cart Summary</p>
               <p>Total:{total} </p>
-              <button className="hover:bg-slate-900 border-2 border-slate-300 shadow-md  hover:text-white h-[50px] w-[200px] rounded-[10px]">
+              <div className="bg-slate-900 border-2 text-white border-slate-300 shadow-md  hover:text-white h-[50px] w-[200px] flex items-center justify-center rounded-[10px]">
                 <FlutterWaveButton {...fwConfig} />
-              </button>
+              </div>
             </div>
           </div>
         </div>

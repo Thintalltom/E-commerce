@@ -35,7 +35,7 @@ const Navbar = () => {
             </div>
           </Link>
           <BsSearch />
-          <BsSuitHeartFill />
+        <Link to="/wishlist"><BsSuitHeartFill /></Link>  
         </div>
       </div>
 
