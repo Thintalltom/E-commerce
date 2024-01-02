@@ -27,12 +27,14 @@ const Allproduct = ({ image, title, price, id }) => {
 
   return (
     <div>
+           
       <div className=" flex justify-center align-center   h-[180px]">
         <img
           src={image}
           className="lg:w-[200px] sm:w-[150px] xxs:w-[80px] md:w-[200px] xs:w-[100px] h-[150px] mt-[30px]"
         />
       </div>
+
       <div className=" xs:w-[200px] sm:w-[275px]  md:w-[345px]  shadow-sm text-slate-900 grid text-sm content-center lg:w-[345px]  p-4 ">
         <p className="text-center ">{truncateText(title, 50)}</p>
         <div className="flex justify-between mt-[5px]">

@@ -61,7 +61,7 @@ const Cart = () => {
             {state.map((item, index) => (
               <div
                 key={item.id}
-                className="flex p-4 flex-col bg-red-500  gap-[20px] shadow-md w-[800px]  border-2  mt-4 justify-between"
+                className="flex p-4 flex-col   gap-[20px] shadow-md w-[800px]  border-2  mt-4 justify-between"
               >
                 <div className="flex justify-around xs:flex-col xxs:flex-col sm:flex-col ">
                   <img src={item.image} className="w-[100px]" />

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { BsSuitHeartFill, BsSearch, BsCart2 } from "react-icons/bs";
-import { CiMenuFries, CiCircleRemove } from "react-icons/ci";
+import { BsSuitHeartFill, BsSearch, BsCart2, BsHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { storeContext } from "../Context/Context";
+import {  FaGripLines } from "react-icons/fa";
 import "./Navbar.css";
 const Navbar = () => {
   const globalContext = useContext(storeContext);
@@ -57,7 +57,14 @@ const Navbar = () => {
           </div>
           </Link>
 
-          <div onClick={handleClick}>{open ? <p>close</p> : <p>open</p>}</div>
+          <div>
+            <Link to='/wishlist'>
+            <BsHeartFill className="text-red-600" />
+            </Link>
+     
+          </div>
+
+          <div onClick={handleClick}>{open ? <FaGripLines /> : <p>close</p>}</div>
         </div>
         <div className={!open ? "header2 shadow-sm lg:hidden md:hidden" : 'header3 lg:hidden'}>
         <p>Home</p>

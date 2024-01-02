@@ -9,9 +9,10 @@ const MenProduct = ({ title, id, image, price }) => {
   const dispatch = globalContext.dispatch;
 
   const AddWishList = () => {
-    const productDetails = { title, price, image, id }; // store the value in a variable
+    const productDetails = { title, price, image, id, quantity: 1 }; // store the value in a variable
     dispatch({ type: "ADD", payload: productDetails }); // add the product into a state
     setIsWishList(!iswishList);
+   
   };
 
 
