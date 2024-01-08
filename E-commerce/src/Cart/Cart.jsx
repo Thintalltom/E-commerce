@@ -10,6 +10,12 @@ const Cart = () => {
   const total = state.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.substr(0, maxLength) + "...";
+  };
 
   const config = {
     public_key: "FLWPUBK_TEST-a222b56e723d00213937e75e5fa80c75-X",
@@ -53,20 +59,20 @@ const Cart = () => {
       return (
         <div className="p-4  flex justify-center align-center flex-col">
           <Link to="/">
-            <p>back</p>
+            <button className="bg-zinc-950 p-4 rounded-[4px] text-white ">back</button>
           </Link>
 
           <p className="text-center text-2xl font-bold">Cart section</p>
-          <div className=" flex justify-center flex-col align-center">
+          <div className=" flex justify-center items-center flex-col align-center">
             {state.map((item, index) => (
               <div
                 key={item.id}
-                className="flex p-4 flex-col   gap-[20px] shadow-md w-[800px]  border-2  mt-4 justify-between"
+                className="flex p-4 flex-row xxs:flex-col  gap-[20px] shadow-md xxs:w-[300px] lg:w-[800px]   border-2  mt-4 justify-between"
               >
-                <div className="flex justify-around xs:flex-col xxs:flex-col sm:flex-col ">
-                  <img src={item.image} className="w-[100px]" />
-                  <p>{item.title}</p>
-                  <p>NGN {item.price}</p> <br />
+                <div className="flex justify-around lg:flex-row xs:flex-row xxs:flex-row sm:flex-row gap-[20px]  ">
+                  <img src={item.image} className="lg:w-[50px] xxs:w-[20px]" />
+                  <p className="xxs:text-sm">{item.title}</p>
+                  <p className="xxs:text-sm">NGN {item.price}</p> <br />
                 </div>
                 <div className=" flex gap-4 flex-row-reverse justify-between xs:flex-col xxs:flex-col sm:flex-col">
                   <div className="flex gap-4">
@@ -101,9 +107,9 @@ const Cart = () => {
                 </div>
               </div>
             ))}
-            <div className="flex justify-between mt-4 xxs:gap-[10rem]">
+            <div className="flex justify-between xxs:flex-col mt-4 xxs:gap-[10px]">
             <p>Cart Summary</p>
-              <p>Total:{total} </p>
+              <p className="font-extrabold">Total: NGN{total} </p>
               <div className="bg-slate-900 border-2 text-white border-slate-300 shadow-md  hover:text-white h-[50px] w-[200px] flex items-center justify-center rounded-[10px]">
                 <FlutterWaveButton {...fwConfig} />
               </div>
