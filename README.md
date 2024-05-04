@@ -1,5 +1,5 @@
 # E-commerce
-Creating a mine e-commerce website using reactjs 
+Creating a  e-commerce website using reactjs 
 
 # The site is hosted on vercel 
 http://ecom-umber-delta.vercel.app/
@@ -11,3 +11,6 @@ https://fakestoreapi.com/
 Javascript 
 Reactjs
 TailwindCss
+
+# Payment Api used 
+Flutterwave Api is used 
