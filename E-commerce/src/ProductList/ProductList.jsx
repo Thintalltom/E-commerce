@@ -23,6 +23,7 @@ const ProductList = () => {
     }, 3000);
   }, []);
 
+
   const [jewelery, setJewelery] = useState([]);
 
   const fetchJewelery = () => {
@@ -89,25 +90,24 @@ const ProductList = () => {
   };
 
   return (
-    <div className=" gap-9 mt-4  cursor-pointer p-4 flex justify-center align-center flex-col ">
-      <div className="xxs:grid xxs:grid-cols-3 xs:flex    rounded-[10px] align-center justify-center flex  gap-9 p-4 ">
+    <div className=" gap-3 mt-4 poppins-medium   p-4 flex justify-center align-center flex-col ">
+      <div className="xxs:grid xxs:grid-cols-3 xs:flex  rounded-[10px] align-center justify-center flex  gap-7 p-4 ">
         <div
           onClick={() => action(1)}
           className={`${
             tabstate === 1
-              ? "   border-b-2 border-b-slate-500  text-center text-xs gridText2  w-[70px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 gridText"
+           ? "  bg-slate-600 text-white font-bold rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
+              : "bg-slate-300 text-black font-bold rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
           }`}
         >
-          {" "}
-          All{" "}
+          All
         </div>
         <div
           onClick={() => action(2)}
           className={`${
             tabstate === 2
-              ? "   border-b-2 border-b-slate-500  text-center text-xs gridText2  w-[90px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 gridText"
+           ? "  bg-slate-600 text-white font-bold rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
+              : "bg-slate-300 text-black font-bold  rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
           }`}
         >
           {" "}
@@ -117,8 +117,8 @@ const ProductList = () => {
           onClick={() => action(3)}
           className={`${
             tabstate === 3
-              ? "   border-b-2 border-b-slate-500  text-center text-xs gridText2 w-[90px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 gridText"
+      ? "  bg-slate-600 text-white font-bold rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
+              : "bg-slate-300 text-black font-bold  rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
           }`}
         >
           {" "}
@@ -128,44 +128,48 @@ const ProductList = () => {
           onClick={() => action(4)}
           className={`${
             tabstate === 4
-              ? "   border-b-2 border-b-slate-500 text-center text-xs gridText2 w-[120px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 gridText"
+                ? "  bg-slate-600 text-white font-bold rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
+              : "bg-slate-300 text-black font-bold  rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
           }`}
         >
-          {" "}
-          Women clothings{" "}
+      
+          Women 
         </div>
         <div
           onClick={() => action(5)}
           className={`${
             tabstate === 5
-              ? "   border-b-2 border-b-slate-500  text-center text-xs   w-[120px] h-[30px] grid content-center"
-              : "bg-white text-xs grid content-center text-slate-500 gridText"
+              ? "  bg-slate-600 text-white font-bold rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
+              : "bg-slate-300 text-black font-bold  rounded-full text-center text-xs w-fit p-[20px] h-[5vh]  grid content-center cursor-pointer"
           }`}
         >
-          {" "}
-          Mens clothings{" "}
+      
+          Mens 
         </div>
       </div>
-      <div>
+      <div className=" mt-[20px]">
         <div
           className={`${
             tabstate === 1
-              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-3 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2  "
+              ? "text-slate-900 grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  "
               : "hidden"
           }`}
           >
           {store.map((store) => (
             <div
               key={store.id}
-              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
+              className="border-[0.5px] w-full max-w-[500px] rounded-md 
+           bg-white shadow-sm border-slate-200 flex  
+           flex-col "
             >
               <Allproduct
                 image={store.image}
                 title={store.title}
                 price={store.price}
                 id={store.id}
+                description={store.description}
                 addToWishlist={addToWishlist}
+                loading={loading}
               />
             </div>
           ))}
@@ -174,14 +178,16 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 2
-              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-2 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
+              ? "text-slate-900 grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  "
               : "hidden"
           }`}
           >
           {jewelery.map((item) => (
             <div
               key={item.id}
-              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
+              className="border-[0.5px] w-full max-w-[500px] rounded-md 
+           bg-white shadow-sm border-slate-200 flex  
+           flex-col"
             >
               <JeweleryProduct
                 price={item.price}
@@ -196,14 +202,16 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 3
-              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-3 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
+              ? "text-slate-900 grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  "
               : "hidden"
           }`}
         >
           {electron.map((item) => (
             <div
               key={item.id}
-              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
+              className="border-[0.5px] w-full max-w-[500px] rounded-md 
+           bg-white shadow-sm border-slate-200 flex  
+           flex-col"
             >
               <ElectronicProduct
                 price={item.price}
@@ -218,14 +226,16 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 4
-              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-3 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
+                 ? "text-slate-900 grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  "
               : "hidden"
           }`}
         >
           {women.map((item) => (
             <div
               key={item.id}
-              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
+              className="border-[0.5px] w-full max-w-[500px] rounded-md 
+           bg-white shadow-sm border-slate-200 flex  
+           flex-col"
             >
               <WomenProduct
                 price={item.price}
@@ -240,14 +250,16 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 5
-              ? "text-slate-900 grid xxs:gap-[30px]  lg:grid-cols-auto lg:justify-items-center xs:justify-items-center xl:grid-cols-2 lg:gap-4 p-4 xs:gap-[50px] mx-auto xs:grid-cols-2 "
+                 ? "text-slate-900 grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  "
               : "hidden"
           }`}
         >
           {men.map((item) => (
             <div
               key={item.id}
-              className="border-2   xs:w-[200px] sm:min-w-[280px] md:w-[350px] rounded-[15px] sm:w-[200px] bg-white shadow-md border-slate-200 flex  justify-between align-center justify-center  flex-col"
+              className="border-[0.5px] w-full max-w-[500px] rounded-md 
+           bg-white shadow-sm border-slate-200 flex  
+           flex-col"
             >
               <MenProduct
                 price={item.price}
