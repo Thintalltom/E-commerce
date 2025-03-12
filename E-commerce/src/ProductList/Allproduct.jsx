@@ -19,24 +19,30 @@ const Allproduct = ({ image, title, price, description, loading }) => {
   };
 
   return (
-    <div className="" >
-      {loading ? <p>...Loading</p> :
+    <div className="">
       <div>
-      <div className=" flex justify-center align-center h-fit cursor-pointer" onClick={() => setPopup(true)}>
-        <img
-          src={image}
-          className="lg:w-[100px] sm:w-[150px] xxs:w-[80px] md:w-[100px] xs:w-[100px] h-[100px] mt-[30px]"
-        />
-      </div>
+        <div
+          className=" flex justify-center align-center h-fit cursor-pointer"
+          onClick={() => setPopup(true)}
+        >
+          <img
+            src={image}
+            className="lg:w-[100px] sm:w-[150px] xxs:w-[80px] md:w-[100px] xs:w-[100px] h-[100px] mt-[30px]"
+          />
+        </div>
 
-      <div className="  border-t-[1px]    shadow-sm text-slate-900  text-sm content-center w-full flex justify-between   p-4 ">
-        <p className=" ">{truncateText(title, 20)}</p>
-        <p className="sm:font-extrabold lg:font-bold"> NGN{price}</p>
+        <div className="  border-t-[1px]    shadow-sm text-slate-900  text-sm content-center w-full flex justify-between   p-4 ">
+          <p className=" ">{truncateText(title, 20)}</p>
+          <p className="sm:font-extrabold lg:font-bold"> NGN{price}</p>
+        </div>
+        {popup && (
+          <Popup
+            onClose={() => setPopup?.(false)}
+            product={{ title, description, image, price }}
+            popup={popup}
+          />
+        )}
       </div>
-      {popup && <Popup onClose={() => setPopup?.(false)} product={{ title, description, image }} />}
-      </div>
-      }
-      
     </div>
   );
 };

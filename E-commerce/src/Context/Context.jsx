@@ -1,4 +1,4 @@
-import { useContext, createContext, useReducer } from "react";
+import { useContext, createContext, useReducer, useState } from "react";
 import {  toast } from 'react-toastify';
 export const storeContext = createContext();
 export const StoreProvider = (props) => {
@@ -48,8 +48,9 @@ export const StoreProvider = (props) => {
   };
   const [state, dispatch] = useReducer(reducer, []); // initial state and the array
   const info = { state, dispatch };
+const [cart, setCart] = useState([])
 
   return (
-    <storeContext.Provider value={info}>{props.children}</storeContext.Provider>
+    <storeContext.Provider value={{info, cart, setCart}}>{props.children}</storeContext.Provider>
   );
 };

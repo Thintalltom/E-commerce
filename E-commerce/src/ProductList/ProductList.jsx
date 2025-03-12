@@ -151,28 +151,33 @@ const ProductList = () => {
         <div
           className={`${
             tabstate === 1
-              ? "text-slate-900 grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  "
+              ? "text-slate-900 "
               : "hidden"
           }`}
           >
-          {store.map((store) => (
-            <div
-              key={store.id}
-              className="border-[0.5px] w-full max-w-[500px] rounded-md 
-           bg-white shadow-sm border-slate-200 flex  
-           flex-col "
-            >
-              <Allproduct
-                image={store.image}
-                title={store.title}
-                price={store.price}
-                id={store.id}
-                description={store.description}
-                addToWishlist={addToWishlist}
-                loading={loading}
-              />
-            </div>
-          ))}
+              {loading ? <p>...Loading</p> :
+              <div className="grid lg:grid-cols-4 sm:grid-cols-1 gap-[10px]  ">
+              {store.map((store) => (
+                <div
+                  key={store.id}
+                  className="border-[0.5px] w-full max-w-[500px] rounded-md 
+               bg-white shadow-sm border-slate-200 flex  
+               flex-col hover:max-w-[500px]"
+                >
+                  <Allproduct
+                    image={store.image}
+                    title={store.title}
+                    price={store.price}
+                    id={store.id}
+                    description={store.description}
+                    addToWishlist={addToWishlist}
+                    loading={loading}
+                  />
+                </div>
+              ))}
+              </div>
+              }
+          
         </div>
 
         <div
