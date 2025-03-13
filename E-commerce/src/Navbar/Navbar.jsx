@@ -16,7 +16,7 @@ const Navbar = () => {
   const {cart} = globalContext;
   const dispatch = globalContext.dispatch;
   const [open, setOpen] = useState(false);
-  const handleClick = () => setOpen(!open);
+  const handleClick = () => setOpen(true);
 
   return (
     <div className="">
@@ -34,7 +34,7 @@ const Navbar = () => {
         </div>
    
       </div>
-      {open && <CartPopup />}
+      {open && <CartPopup open={open} setOpen={setOpen} />}
     </div>
   );
 };
