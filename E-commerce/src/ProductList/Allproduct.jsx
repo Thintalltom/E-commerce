@@ -19,10 +19,10 @@ const Allproduct = ({ image, title, price, description, loading }) => {
   };
 
   return (
-    <div className="">
-      <div>
+    <div className="poppins-light rounded-md border-[1px]">
+      <div className="">
         <div
-          className=" flex justify-center align-center h-fit cursor-pointer"
+          className="  flex justify-center align-center h-fit cursor-pointer"
           onClick={() => setPopup(true)}
         >
           <img
@@ -31,9 +31,9 @@ const Allproduct = ({ image, title, price, description, loading }) => {
           />
         </div>
 
-        <div className="  border-t-[1px]    shadow-sm text-slate-900  text-sm content-center w-full flex justify-between   p-4 ">
+        <div className="  border-t-[1px]   shadow-sm text-slate-900  text-xs content-center w-full  flex justify-between   p-4 ">
           <p className=" ">{truncateText(title, 20)}</p>
-          <p className="sm:font-extrabold lg:font-bold"> NGN{price}</p>
+          <p className="font-medium"> {"\u20A6"}{price}</p>
         </div>
         {popup && (
           <Popup

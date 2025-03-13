@@ -32,31 +32,31 @@ const Popup = ({ product, onClose, popup }) => {
         <div className="flex justify-center items-center">
           <img src={product.image} className="w-[100px] h-[100px]" />
         </div>
-        <div>
+        <div className="">
           <h2 className="text-sm text-center font-bold mb-4">
             {product.title}
           </h2>
-          <p className="text-xs font-light w-[30vw] ">{product.description}</p>
+          <p className="text-xs font-light  ">{product.description}</p>
         </div>
 
         <div className=" flex justify-between">
-          <div className="flex gap-[10px] flex-row">
+          <div className="flex gap-[10px] flex-row w-[40%] ">
             <button
-              className="bg-zinc-300 text-black rounded-full w-[3vw]  p-[5px] h-[100%]"
+              className="bg-zinc-300 text-black rounded-full w-[100%]  p-[10px] h-[100%]"
               onClick={() => setCount(count + 1)}
             >
               +
             </button>
-            <button className="w-fit">{count}</button>
+            <button className="w-[100%]">{count}</button>
             <button
-              className="bg-zinc-300 text-black rounded-full w-[3vw]  p-[5px] h-[100%]"
+              className="bg-zinc-300 text-black rounded-full w-[100%]  p-[5px] h-[100%]"
               onClick={() => setCount(count - 1)}
             >
               -
             </button>
           </div>
-          <div className="bg-black text-white cursor-pointer flex text-center justify-center items-center rounded-full w-[15vw] shadow-md p-[5px] ">
-            <button className="w-[100%] text-xs" onClick={addProductToCart}>
+          <div className="bg-black text-white cursor-pointer flex text-center justify-center items-center rounded-full  shadow-md p-[5px] ">
+            <button className="w-[100%] text-xs p-[10px]" onClick={addProductToCart}>
               Add to Cart ({"\u20A6"}
               {count * Math.round(product.price)})
             </button>

@@ -12,7 +12,7 @@ const ProductList = () => {
   const [tabstate, setTabstate] = useState(1);
 
   const categories = {
-    1: "", // Fetch all products
+    1: "",
     2: "jewelery",
     3: "electronics",
     4: "women's clothing",
@@ -37,12 +37,12 @@ const ProductList = () => {
 
   return (
     <div className="p-4 flex flex-col justify-center poppins-medium">
-      <div className="grid grid-cols-5 gap-4 p-4">
+      <div className=" flex justify-center  items-center gap-4 p-4">
         {Object.entries(categories).map(([key, value]) => (
           <div
             key={key}
             onClick={() => setTabstate(Number(key))}
-            className={`cursor-pointer p-2 text-center rounded-full ${
+            className={`cursor-pointer p-[10px] text-center text-[10px] rounded-[20px]  ${
               tabstate === Number(key) ? "bg-slate-600 text-white" : "bg-slate-300 text-black"
             }`}
           >
@@ -50,13 +50,11 @@ const ProductList = () => {
           </div>
         ))}
       </div>
-
-      {/* Product Listing */}
       <div className="grid lg:grid-cols-4 sm:grid-cols-1 gap-4 mt-4">
         {products.map((product) => (
           <div
             key={product.id}
-            className="border rounded-md bg-white shadow-sm flex flex-col p-2"
+            className=" rounded-md bg-white  flex flex-col p-2"
           >
             {tabstate === 1 && <Allproduct {...product} />}
             {tabstate === 2 && <JeweleryProduct {...product} />}

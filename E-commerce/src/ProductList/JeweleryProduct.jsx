@@ -23,7 +23,7 @@ const JeweleryProduct = ({ title, id, image, price }) => {
 
   return (
     <Link to={`/detail/${id}`}>
-    <div>
+    <div className="poppins-light rounded-md border-[1px]">
       <div className=" flex justify-center align-center   ">
         <img
           src={image}
@@ -31,9 +31,9 @@ const JeweleryProduct = ({ title, id, image, price }) => {
         />
       </div>
       <div className=" border-t-[1px]    shadow-sm text-slate-900  text-sm content-center w-full flex justify-between   p-4">
-        <p className="text-center ">{truncateText(title, 20)}</p>
+        <p className="text-center text-xs ">{truncateText(title, 20)}</p>
         <div className="flex justify-between mt-[5px]">
-          <p className="font-bold"> NGN {price}</p>
+          <p className="font-medium"> {"\u20A6"} {price}</p>
         </div>
        
       </div>
