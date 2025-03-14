@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { storeContext } from "../Context/Context";
 import Allproduct from "./Allproduct";
 import WomenProduct from "./WomenProduct";
 import MenProduct from "./MenProduct";
@@ -9,58 +8,85 @@ import ElectronicProduct from "./ElectronicProduct";
 import JeweleryProduct from "./JeweleryProduct";
 
 const ProductList = () => {
-  const [tabstate, setTabstate] = useState(1);
+  const [tabsClick, setTabsClick] = useState(1); 
 
   const categories = {
-    1: "",
-    2: "jewelery",
-    3: "electronics",
-    4: "women's clothing",
-    5: "men's clothing",
+    1: "https://fakestoreapi.com/products",
+    2: "https://fakestoreapi.com/products/category/jewelery",
+    3: "https://fakestoreapi.com/products/category/electronics",
+    4: "https://fakestoreapi.com/products/category/women's clothing",
+    5: "https://fakestoreapi.com/products/category/men's clothing",
   };
 
-  const fetchProducts = async (category) => {
-    const url = category
-      ? `https://fakestoreapi.com/products/category/${category}`
-      : "https://fakestoreapi.com/products";
-    const response = await axios.get(url);
-    return response.data;
+  const tabs = [
+    { id: 1, label: "All" },
+    { id: 2, label: "Jewelery" },
+    { id: 3, label: "Electronics" },
+    { id: 4, label: "Women" },
+    { id: 5, label: "Men" },
+  ];
+
+  const fetchProducts = async () => {
+    const responses = await Promise.all(
+      Object.values(categories).map((url) => axios.get(url))//map through the object values
+    );
+    return {
+      all: responses[0].data,
+      jewelery: responses[1].data,
+      electronics: responses[2].data,
+      women: responses[3].data,
+      men: responses[4].data,
+    };
   };
 
-  const { data: products, isLoading, isError } = useQuery({
-    queryKey: ["products", categories[tabstate]],
-    queryFn: () => fetchProducts(categories[tabstate]),
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["allProducts"],
+    queryFn: fetchProducts,
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error fetching data</p>;
+ 
+  const selectedProducts = data
+    ? tabsClick === 1
+      ? data.all
+      : tabsClick === 2
+      ? data.jewelery
+      : tabsClick === 3
+      ? data.electronics
+      : tabsClick === 4
+      ? data.women
+      : data.men
+    : [];
 
   return (
     <div className="p-4 flex flex-col justify-center poppins-medium">
-      <div className=" flex justify-center  items-center gap-4 p-4">
-        {Object.entries(categories).map(([key, value]) => (
-          <div
-            key={key}
-            onClick={() => setTabstate(Number(key))}
-            className={`cursor-pointer p-[10px] text-center text-[10px] rounded-[20px]  ${
-              tabstate === Number(key) ? "bg-slate-600 text-white" : "bg-slate-300 text-black"
-            }`}
+    
+      <div className="flex justify-center items-center gap-4 p-4">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            className={`p-2 ${
+              tabsClick === tab.id ? "bg-slate-500 text-white text-xs poppins-light" : "bg-gray-200 text-xs poppins-light"
+            } rounded-full lg:p-[1%] sm:p-[2%]`}
+            onClick={() => setTabsClick(tab.id)}
           >
-            {key === "1" ? "All" : value.charAt(0).toUpperCase() + value.slice(1)}
-          </div>
+            {tab.label}
+          </button>
         ))}
       </div>
+
+      {isLoading && <p className="text-center mt-4">Loading...</p>}
+      {isError && <p className="text-center mt-4 text-red-500">Error fetching data</p>}
+
+     
       <div className="grid lg:grid-cols-4 sm:grid-cols-1 gap-4 mt-4">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className=" rounded-md bg-white  flex flex-col p-2"
-          >
-            {tabstate === 1 && <Allproduct {...product} />}
-            {tabstate === 2 && <JeweleryProduct {...product} />}
-            {tabstate === 3 && <ElectronicProduct {...product} />}
-            {tabstate === 4 && <WomenProduct {...product} />}
-            {tabstate === 5 && <MenProduct {...product} />}
+        {selectedProducts.map((product) => (
+          <div key={product.id} className="rounded-md bg-white flex flex-col p-2">
+            {tabsClick === 1 && <Allproduct {...product} />}
+            {tabsClick === 2 && <JeweleryProduct {...product} />}
+            {tabsClick === 3 && <ElectronicProduct {...product} />}
+            {tabsClick === 4 && <WomenProduct {...product} />}
+            {tabsClick === 5 && <MenProduct {...product} />}
           </div>
         ))}
       </div>
