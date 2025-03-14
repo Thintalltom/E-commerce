@@ -5,7 +5,7 @@ import { wishContext } from "../Context/wishContext";
 import Popup from "../Popup/Popup";
 import "./ProductList.css";
 
-const Allproduct = ({ image, title, price, description, loading }) => {
+const Allproduct = ({ image, title, price, description, id }) => {
   const [popup, setPopup] = useState(false);
 
   const globalContext = useContext(wishContext);
@@ -38,7 +38,7 @@ const Allproduct = ({ image, title, price, description, loading }) => {
         {popup && (
           <Popup
             onClose={() => setPopup?.(false)}
-            product={{ title, description, image, price }}
+            product={{ title, description, image, price, id }}
             popup={popup}
           />
         )}

@@ -22,11 +22,8 @@ const Navbar = () => {
     <div className="">
       <div className="flex  shadow-sm justify-between p-[20px] h-fit  ">
         <p className="text-slate-900 font-extrabold text-lg">My Shop</p>
-        <div className="bg-zinc-100 rounded-full w-[25vw] p-[10px] flex items-center h-[6vh] ">
-          <input type="text" placeholder="Search" className="text-xs text-black  p-[5px] bg-transparent  outline-none placeholder-slate-500 " />
-        </div>
-      
-        <div className="flex justify-center items-center ">
+       
+        <div className="flex justify-center items-center cursor-pointer">
           <p>
             <BsCart2 onClick={handleClick} />
           </p>
