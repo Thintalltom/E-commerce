@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { wishContext } from "../Context/wishContext";
 import Popup from "../Popup/Popup";
 import "./ProductList.css";
