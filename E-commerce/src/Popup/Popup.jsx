@@ -33,10 +33,10 @@ const Popup = ({ product, onClose, popup }) => {
           <img src={product.image} className="w-[100px] h-[100px]" />
         </div>
         <div className="">
-          <h2 className="text-sm text-center font-bold mb-4">
+          <h2 role="title" className="text-sm text-center font-bold mb-4">
             {product.title}
           </h2>
-          <p className="text-xs font-light  ">{product.description}</p>
+          <p className="text-xs font-light  " role="description">{product.description}</p>
         </div>
 
         <div className=" flex justify-between">
@@ -44,13 +44,15 @@ const Popup = ({ product, onClose, popup }) => {
             <button
               className="bg-zinc-300 text-black rounded-full w-[100%]  p-[10px] h-[100%]"
               onClick={() => setCount(count + 1)}
+              role="increment"
             >
               +
             </button>
             <button className="w-[100%]">{count}</button>
             <button
               className="bg-zinc-300 text-black rounded-full w-[100%]  p-[5px] h-[100%]"
-              onClick={() => setCount(count - 1)}
+              onClick={() => setCount((prev) => Math.max(1, prev - 1))}
+              role="decrement"
             >
               -
             </button>

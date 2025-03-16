@@ -6,14 +6,11 @@ import "./ProductList.css";
 const Allproduct = ({ image, title, price, description, id }) => {
   const [popup, setPopup] = useState(false);
 
-  const globalContext = useContext(wishContext);
-  const dispatch = globalContext.dispatch;
-
-  const truncateText = (text, maxLength) => {
+  const truncateText = (text = "", maxLength) => {
     if (text.length <= maxLength) {
       return text;
     }
-    return text.substr(0, maxLength) + "...";
+    return text.substring(0, maxLength) + "...";
   };
 
   return (
@@ -22,6 +19,7 @@ const Allproduct = ({ image, title, price, description, id }) => {
         <div
           className="  flex justify-center align-center h-fit cursor-pointer"
           onClick={() => setPopup(true)}
+          data-testid="product-Popup"
         >
           <img
             src={image}
@@ -30,8 +28,8 @@ const Allproduct = ({ image, title, price, description, id }) => {
         </div>
 
         <div className="  border-t-[1px]   shadow-sm text-slate-900  text-xs content-center w-full  flex justify-between   p-4 ">
-          <p className=" ">{truncateText(title, 20)}</p>
-          <p className="font-medium"> {"\u20A6"}{price}</p>
+          <p className=" " role="title">{truncateText(title, 20)}</p>
+          <p className="font-medium" role="price"> {"\u20A6"}{price}</p>
         </div>
         {popup && (
           <Popup

@@ -2,9 +2,6 @@ import { useContext, createContext, useReducer, useState } from "react";
 import {  toast } from 'react-toastify';
 export const storeContext = createContext();
 export const StoreProvider = (props) => {
-
-
-  
   //will use useReducer hook to add the product to the cart
   const reducer = (state, action) => {
     switch (action.type) {

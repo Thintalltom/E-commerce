@@ -70,6 +70,7 @@ const ProductList = () => {
               tabsClick === tab.id ? "bg-slate-500 text-white text-xs poppins-light" : "bg-gray-200 text-xs poppins-light"
             } rounded-full lg:p-[1%] sm:p-[2%]`}
             onClick={() => setTabsClick(tab.id)}
+            role="tabs"
           >
             {tab.label}
           </button>
@@ -78,8 +79,6 @@ const ProductList = () => {
 
       {isLoading && <p className="text-center mt-4">Loading...</p>}
       {isError && <p className="text-center mt-4 text-red-500">Error fetching data</p>}
-
-     
       <div className="grid lg:grid-cols-4 sm:grid-cols-1 gap-4 mt-4">
         {selectedProducts.map((product) => (
           <div key={product.id} className="rounded-md bg-white flex flex-col p-2">
