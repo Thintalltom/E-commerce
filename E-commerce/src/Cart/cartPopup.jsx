@@ -23,7 +23,7 @@ console.log(cart)
     setOpen(!open);
   };
 
-  const subtotal = cart.reduce((acc, item) => acc + item.total, 0);
+  const subtotal = cart.reduce((acc, item) => acc + item.total, 0).toFixed(2);
 
   const config = {
     public_key: "FLWPUBK_TEST-a222b56e723d00213937e75e5fa80c75-X",
@@ -60,7 +60,7 @@ console.log(cart)
         <div>
           <div className="flex flex-row justify-center items-center  p-[5px] border-[0.8px] h-[10vh] shadow-sm">
             <button onClick={closeModal} className=" ">
-              <MdCancel className="text-lg" />
+              <MdCancel className="text-2xl" />
             </button>
             <p className=" text-center w-[90%]">My Order</p>
           </div>
@@ -84,26 +84,29 @@ console.log(cart)
                       alt="image of goods"
                       className="w-[30%] h-[100%]"
                     />
-                    <div className="flex flex-col gap-[15px]">
-                      <p className="text-xs">{item.title}</p>
-                      <p className="text-xs">
+                    <div className="flex flex-col  w-full  gap-[15px]">
+                      <p className="text-[10px] poppins-light">{item.title}</p>
+                      <div className="flex justify-between">
+                      <p className="text-xs poppins-light ">
                         {"\u20A6"}
                         {item.total}
                       </p>
+                      <button onClick={() => removeProduct(item.id)} className="text-sm rounded-full p-[5px] bg-slate-300 "><RiDeleteBin7Fill className="text-zinc-950" /></button>
+                        </div>
+                      
+                      
                     </div>
-                    <button onClick={() => removeProduct(item.id)}><RiDeleteBin7Fill /></button>
+                   
                   </div>
                 );
               })}
             </div>
 
-            <div className="  flex  flex-col gap-[10px]  ">
+            <div className="  flex  flex-col gap-[10px]  h-[30vh] ">
               <div className="bg-slate-200 flex justify-between p-[10px] ">
                 <p>Subtotal</p>
                 <p>
-                  {" "}
-                  {"\u20A6"}
-                 {subtotal}
+                {"\u20A6"}{parseFloat(subtotal)}
                 </p>
               </div>
               <div className=" flex justify-center items-center">
