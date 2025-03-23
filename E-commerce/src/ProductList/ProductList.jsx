@@ -41,12 +41,6 @@ const ProductList = () => {
     };
   };
 
-  const getProduct = async () => {
-    const response = await axios.get("https://api.escuelajs.co/api/v1/products");
-    console.log(response)
-  }
-  getProduct()
-
   const { data, isLoading, isError } = useQuery({
     queryKey: ["allProducts"],
     queryFn: fetchProducts,
