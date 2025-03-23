@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { it, expect, describe, vi } from "vitest";
+import Popup from "../Popup/Popup";
 import Allproduct from "../ProductList/Allproduct";
 import { StoreProvider } from "../Context/Context";
 import "@testing-library/jest-dom/vitest"; // this helps for testing library
@@ -38,6 +39,7 @@ describe("popup", () => {
     render(
       <StoreProvider>
         <Allproduct {...product}/>
+        <Popup product={product} onClose={setPopupMock} popup={true} />
       </StoreProvider>
     );
     const div = screen.getByTestId("product-Popup");
@@ -47,5 +49,7 @@ describe("popup", () => {
     const title = screen.getByRole("title");
     fireEvent.click(div);
     expect(title).toBeInTheDocument();
+
+
   });
 });
