@@ -30,7 +30,7 @@ const ProductList = () => {
     const responses = await Promise.all(
       Object.values(categories).map((url) => axios.get(url))//map through the object values
     );
-    console.log(responses[0].data);
+ 
   
     return {
       all: responses[0].data,

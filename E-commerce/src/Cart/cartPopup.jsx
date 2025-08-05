@@ -6,7 +6,7 @@ import { RiDeleteBin7Fill } from "react-icons/ri";
 const CartPopup = ({ open, setOpen }) => {
   const globalContext = useContext(storeContext);
   const { cart, setCart } = globalContext;
-  console.log(cart);
+ 
   const removeProduct = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
@@ -47,8 +47,7 @@ const CartPopup = ({ open, setOpen }) => {
     ...config,
     text: "Proceed to Checkout",
     callback: (response) => {
-      console.log(response);
-      closePaymentModal(); // this will close the modal programmatically
+      closePaymentModal();
     },
     onClose: () => {},
   };
